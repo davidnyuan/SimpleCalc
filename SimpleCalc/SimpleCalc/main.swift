@@ -9,7 +9,7 @@
 import Foundation
 
 // create array
-var intlist =  [Int]()
+var intlist =  [Double]()
 let whitespace = NSCharacterSet.whitespaceCharacterSet()
 
 print("Enter an expression separated by returns:")
@@ -20,7 +20,7 @@ let response = readLine(stripNewline: true)!
 let ws = response.rangeOfCharacterFromSet(whitespace)
 
 //takes input and does a simple calculation
-func simpCalc(num: Int) {
+func simpCalc(num: Double) {
     // Takes in Operand
     let operand = readLine(stripNewline: true)!
     let symbol : String = String(UTF8String: operand)!
@@ -28,7 +28,7 @@ func simpCalc(num: Int) {
     // Takes in Second Number
     let input2 = readLine(stripNewline: true)!
     let response2 : String = String(UTF8String: input2)!
-    let num2 = Int(response2)
+    let num2 = Double(response2)
     
     if symbol == "+" {
         print(num + num2!)
@@ -52,11 +52,11 @@ func count() {
 
 // Prints average of inputted numbers
 func average() {
-    var sum = 0
+    var sum = 0.0
     for number in intlist{
         sum += number
     }
-    let ave = sum / intlist.count
+    let ave = sum / Double(intlist.count)
     print(ave)
 }
 
@@ -66,7 +66,7 @@ func fact() {
         print("Sorry, you have too many numbers")
     } else {
         var factorial = 1
-        for int in 1...intlist[0] {
+        for int in 1...(Int(intlist[0])) {
             factorial *= int
         }
         print(factorial)
@@ -78,7 +78,7 @@ func complexCalc() {
     let string : String = String(UTF8String: response)!
     let numList = string.characters.split{$0 == " "}.map(String.init)
     for index in 0...(numList.count - 2) {
-        intlist.append(Int(numList[index])!)
+        intlist.append(Double(numList[index])!)
     }
     let multioperator = numList[numList.count-1]
     if multioperator == "count" {
@@ -97,6 +97,6 @@ if let test = ws {
     complexCalc()
 } else { // normal calculator
     let string : String = String(UTF8String: response)!
-    let num = Int(string)
+    let num = Double(string)
     simpCalc(num!)
 }
