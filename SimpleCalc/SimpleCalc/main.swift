@@ -14,31 +14,32 @@ let whitespace = NSCharacterSet.whitespaceCharacterSet()
 
 print("Enter an expression separated by returns:")
 
-// Take in First Number
+// Take in First Expression
 let response = readLine(stripNewline: true)!
 // check to see if there are white spaces
 let ws = response.rangeOfCharacterFromSet(whitespace)
 
 //takes input and does a simple calculation
-func simpCalc(num: UInt) {
+func simpCalc(num: Int) {
     // Takes in Operand
     let operand = readLine(stripNewline: true)!
     let symbol : String = String(UTF8String: operand)!
     
     // Takes in Second Number
-    let response2 = readLine(stripNewline: true)!
-    let num2 = UInt.init(response2)!
+    let input2 = readLine(stripNewline: true)!
+    let response2 : String = String(UTF8String: input2)!
+    let num2 = Int(response2)
     
     if symbol == "+" {
-        print(num + num2)
+        print(num + num2!)
     } else if symbol == "-" {
-        print (num - num2)
+        print (num - num2!)
     } else if symbol == "*" {
-        print (num * num2)
+        print (num * num2!)
     } else if symbol == "%" {
-        print (num % num2)
+        print (num % num2!)
     } else if symbol == "/" {
-        print (num / num2)
+        print (num / num2!)
     } else {
         print ("Invalid operator")
     }
@@ -95,6 +96,7 @@ func complexCalc() {
 if let test = ws {
     complexCalc()
 } else { // normal calculator
-    let num = UInt.init(response)!
-    simpCalc(num)
+    let string : String = String(UTF8String: response)!
+    let num = Int(string)
+    simpCalc(num!)
 }
